@@ -11,6 +11,14 @@ export default function App() {
     { text: 'Status', key: '3'},
     { text: 'Notes', key: '4'},
   ])
+
+  const pressHandler = (key) => {
+    setStats((prevTodos) =>  {
+      return prevTodos.filter(todo => todo.key != key);
+    });
+  }
+  
+
   return (
     <View style={styles.container}>
       <Header /> 
@@ -22,7 +30,7 @@ export default function App() {
             data={stats}
             renderItem={({ item }) => (
               // <Text>{item.text}</Text>
-              <TodoItem  item={item}/>
+              <TodoItem  item={item} pressHandler={pressHandler}/>
             )}
 
           />
